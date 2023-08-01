@@ -1,62 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Upload de Arquivo</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    #uploadContainer {
-      border: 2px dashed #ccc;
-      padding: 20px;
-      width: 300px;
-      margin: 50px auto;
-    }
-    #fileInput {
-      display: none;
-    }
-    #customButton {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      cursor: pointer;
-      border: none;
-      border-radius: 4px;
-    }
-  </style>
+    <title>Simulação de Upload</title>
 </head>
 <body>
-  <div id="uploadContainer">
-    <form action="#" method="post" enctype="multipart/form-data" id="uploadForm">
-      <input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
-      <label for="fileInput" id="customButton">Selecione um arquivo</label>
-      <input type="file" id="fileInput" name="file" />
-      <input type="submit" value="Enviar" style="display: none;" />
+    <h1>Simulação de Upload de Arquivo</h1>
+    <form action="https://www.youtube.com" method="post" enctype="multipart/form-data">
+        <label for="fileInput">Selecione um arquivo:</label>
+        <input type="file" id="fileInput" name="fileInput" accept=".txt, .pdf, .doc, .docx">
+        <br>
+        <input type="submit" value="Enviar e Redirecionar">
     </form>
-  </div>
-
-  <script>
-    document.getElementById('customButton').addEventListener('click', function() {
-      document.getElementById('fileInput').click();
-    });
-
-    document.getElementById('uploadForm').addEventListener('submit', function(event) {
-      var fileInput = document.getElementById('fileInput');
-
-      if (!fileInput.files.length > 0) {
-        // Caso nenhum arquivo tenha sido selecionado.
-        event.preventDefault(); // Impede o envio padrão do formulário
-        alert('Por favor, selecione um arquivo antes de fazer o upload.');
-      } else {
-        // O usuário selecionou um arquivo, o formulário será enviado normalmente
-        // após o upload, o usuário será redirecionado para o link desejado.
-        // Neste exemplo, após 2 segundos de atraso para simular o upload.
-        setTimeout(function() {
-          window.location.href = 'https://www.seulinkdedestino.com';
-        }, 2000);
-      }
-    });
-  </script>
 </body>
 </html>
