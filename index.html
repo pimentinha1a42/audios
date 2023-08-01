@@ -35,15 +35,40 @@
         input[type="submit"]:hover {
             background-color: #008000; /* Verde mais claro ao passar o mouse */
         }
+
+        #linkResultado {
+            display: none;
+            margin-top: 20px;
+            color: #006400; /* Verde escuro */
+            font-size: 16px;
+        }
     </style>
+    <script>
+        function exibirLinkFicticio() {
+            const linkResultado = document.getElementById("linkResultado");
+            const fileInput = document.getElementById("fileInput");
+
+            // Obtém o nome do arquivo (apenas para fins ilustrativos)
+            const nomeArquivo = fileInput.files[0].name;
+            
+            // Aqui você pode substituir 'https://www.example.com/' pelo link desejado.
+            const linkFicticio = 'https://www.example.com/' + nomeArquivo;
+
+            // Exibe o link fictício na página
+            linkResultado.textContent = "Seu arquivo foi enviado com sucesso! Clique no link abaixo para acessá-lo: " + linkFicticio;
+            linkResultado.style.display = "block";
+        }
+    </script>
 </head>
 <body>
-    <h1>COLOQUE SEU COMPROVANTE AQUI</h1>
-    <form action="https://www.youtube.com" method="post" enctype="multipart/form-data">
+    <h1>Simulação de Upload de Arquivo</h1>
+    <form onsubmit="exibirLinkFicticio(); return false;">
         <label for="fileInput">Selecione um arquivo:</label>
         <input type="file" id="fileInput" name="fileInput" accept=".txt, .pdf, .doc, .docx">
         <br>
-        <input type="submit" value="Enviar arquivo">
+        <input type="submit" value="Enviar e Ver Link Fictício">
     </form>
+
+    <div id="linkResultado"></div>
 </body>
 </html>
