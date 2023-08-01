@@ -1,35 +1,78 @@
-<form action="processar_upload.php" method="post" enctype="multipart/form-data" id="uploadForm">
-  <input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
-  <input type="file" id="fileInput" />
-  <input type="submit" value="Upload" />
-</form>
-
-<script>
-  document.getElementById('uploadForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Impede o envio padrão do formulário
-    var fileInput = document.getElementById('fileInput');
-    
-    if (fileInput.files.length > 0) {
-      var formData = new FormData();
-      formData.append('file', fileInput.files[0]);
-
-      // Aqui você pode usar o AJAX para enviar o arquivo para o servidor.
-      // Exemplo usando XMLHttpRequest:
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'processar_upload.php', true);
-      xhr.onload = function() {
-        if (xhr.status === 200) {
-          // Upload bem-sucedido, redirecionar o usuário para o link desejado.
-          window.location.href = 'https://www.youtube.com/';
-        } else {
-          // Tratar erros de upload, se necessário.
-          alert('Ocorreu um erro durante o upload. Tente novamente mais tarde.');
-        }
-      };
-      xhr.send(formData);
-    } else {
-      // Caso nenhum arquivo tenha sido selecionado.
-      alert('Por favor, selecione um arquivo antes de fazer o upload.');
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload de Arquivo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
     }
-  });
-</script>
+    #uploadContainer {
+      border: 2px dashed #ccc;
+      padding: 20px;
+      width: 300px;
+      margin: 50px auto;
+    }
+    #fileInput {
+      display: none;
+    }
+    #customButton {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div id="uploadContainer">
+    <form action="processar_upload.php" method="post" enctype="multipart/form-data" id="uploadForm">
+      <input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
+      <label for="fileInput" id="customButton">Selecione um arquivo</label>
+      <input type="file" id="fileInput" name="file" />
+      <input type="submit" value="Enviar" style="display: none;" />
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('customButton').addEventListener('click', function() {
+      document.getElementById('fileInput').click();
+    });
+
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Impede o envio padrão do formulário
+      var fileInput = document.getElementById('fileInput');
+
+      if (fileInput.files.length > 0) {
+        var formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+
+        // Aqui você pode usar o AJAX para enviar o arquivo para o servidor.
+        // Exemplo usando Fetch API:
+        fetch('processar_upload.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(function(response) {
+          if (response.ok) {
+            // Upload bem-sucedido, redirecionar o usuário para o link desejado.
+            window.location.href = 'https://www.seulinkdedestino.com';
+          } else {
+            // Tratar erros de upload, se necessário.
+            alert('Ocorreu um erro durante o upload. Tente novamente mais tarde.');
+          }
+        })
+        .catch(function(error) {
+          console.error('Erro na requisição:', error);
+          alert('Ocorreu um erro durante o upload. Tente novamente mais tarde.');
+        });
+      } else {
+        // Caso nenhum arquivo tenha sido selecionado.
+        alert('Por favor, selecione um arquivo antes de fazer o upload.');
+      }
+    });
+  </script>
+</body>
+</html>
