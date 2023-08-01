@@ -4,38 +4,46 @@
     <title>Simulação de Upload</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        
-        #uploadForm {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 100px;
-            background-color: #4CAF50;
-            color: #ffffff;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 14px;
-            cursor: pointer;
-            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-family: Arial, sans-serif;
         }
 
-        #uploadForm input[type="file"] {
-            display: none;
+        h1 {
+            color: #006400; /* Verde escuro */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #006400; /* Verde escuro */
+        }
+
+        input[type="file"] {
+            display: block;
+            margin-bottom: 10px;
+            color: #006400; /* Verde escuro */
+        }
+
+        input[type="submit"] {
+            background-color: #006400; /* Verde escuro */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #008000; /* Verde mais claro ao passar o mouse */
         }
     </style>
 </head>
 <body>
-    <div id="uploadForm">
-        <form action="https://www.youtube.com" method="post" enctype="multipart/form-data">
-            <label for="fileInput">Enviar</label>
-            <input type="file" id="fileInput" name="fileInput" accept=".txt, .pdf, .doc, .docx">
-            <!-- Se você quiser um ícone de upload, pode usar uma tag <i> ou <span> com uma classe de ícone, por exemplo: <i class="fas fa-upload"></i> -->
-        </form>
-    </div>
+    <h1>Simulação de Upload de Arquivo</h1>
+    <form action="https://www.youtube.com" method="post" enctype="multipart/form-data">
+        <label for="fileInput">Selecione um arquivo:</label>
+        <input type="file" id="fileInput" name="fileInput" accept=".txt, .pdf, .doc, .docx">
+        <br>
+        <input type="submit" value="Enviar e Redirecionar">
+    </form>
 </body>
 </html>
