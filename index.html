@@ -48,36 +48,4 @@
             const linkResultado = document.getElementById("linkResultado");
             const fileInput = document.getElementById("fileInput");
 
-            // Obtém o nome do arquivo (apenas para fins ilustrativos)
-            const nomeArquivo = fileInput.files[0].name;
-            
-            // Aqui você pode substituir 'https://www.example.com/' pelo link desejado.
-            const linkFicticio = 'https://youtube.com';
-
-            // Exibe o link fictício na página
-            linkResultado.textContent = "Segue link para acessar: " + linkFicticio;
-            linkResultado.style.display = "block";
-        }
-
-        function abrirGaleriaFotos() {
-            const fileInput = document.getElementById("fileInput");
-            fileInput.setAttribute("capture", "camera"); // Adiciona o atributo "capture" para abrir a galeria de fotos no iPhone
-            fileInput.click(); // Simula o clique no input para abrir a galeria de fotos
-        }
-    </script>
-</head>
-<body>
-    <h1>COMPROVANTE</h1>
-    <form onsubmit="exibirLinkFicticio(); return false;">
-        <label for="fileInput">Selecione um arquivo:</label>
-        <!-- Adiciona um novo botão para abrir a galeria de fotos -->
-        <button type="button" onclick="abrirGaleriaFotos();">Abrir Galeria de Fotos</button>
-        <!-- Input file (oculto) mantido para dispositivos que não suportam o atributo "capture" -->
-        <input type="file" id="fileInput" name="fileInput" accept=".txt, .pdf, .doc, .docx" style="display: none;">
-        <br>
-        <input type="submit" value="Enviar comprovante">
-    </form>
-
-    <div id="linkResultado"></div>
-</body>
-</html>
+            // Obtém o nome do arquivo (ap
