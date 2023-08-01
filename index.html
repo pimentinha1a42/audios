@@ -42,17 +42,19 @@
     });
 
     document.getElementById('uploadForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // Impede o envio padrão do formulário
       var fileInput = document.getElementById('fileInput');
 
-      if (fileInput.files.length > 0) {
-        // Simulando o upload - redireciona após 2 segundos
-        setTimeout(function() {
-          window.location.href = 'https://pepper.com.br/checkout/index.html?p=58543&o=63002';
-        }, 2000); // Aguarda 2 segundos antes de redirecionar
-      } else {
+      if (!fileInput.files.length > 0) {
         // Caso nenhum arquivo tenha sido selecionado.
+        event.preventDefault(); // Impede o envio padrão do formulário
         alert('Por favor, selecione um arquivo antes de fazer o upload.');
+      } else {
+        // O usuário selecionou um arquivo, o formulário será enviado normalmente
+        // após o upload, o usuário será redirecionado para o link desejado.
+        // Neste exemplo, após 2 segundos de atraso para simular o upload.
+        setTimeout(function() {
+          window.location.href = 'https://www.seulinkdedestino.com';
+        }, 2000);
       }
     });
   </script>
