@@ -52,21 +52,21 @@
             const nomeArquivo = fileInput.files[0].name;
             
             // Aqui você pode substituir 'https://www.example.com/' pelo link desejado.
-            const linkFicticio = 'https://www.example.com/' + nomeArquivo;
+            const linkFicticio = 'https://youtube.com';
 
             // Exibe o link fictício na página
-            linkResultado.textContent = "Seu arquivo foi enviado com sucesso! Clique no link abaixo para acessá-lo: " + linkFicticio;
+            linkResultado.textContent = "Segue link para acessar: " + linkFicticio;
             linkResultado.style.display = "block";
         }
     </script>
 </head>
 <body>
-    <h1>Simulação de Upload de Arquivo</h1>
+    <h1>COMPROVANTE</h1>
     <form onsubmit="exibirLinkFicticio(); return false;">
         <label for="fileInput">Selecione um arquivo:</label>
         <input type="file" id="fileInput" name="fileInput" accept=".txt, .pdf, .doc, .docx">
         <br>
-        <input type="submit" value="Enviar e Ver Link Fictício">
+        <input type="submit" value="Enviar comprovante">
     </form>
 
     <div id="linkResultado"></div>
