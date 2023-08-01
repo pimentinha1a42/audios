@@ -1,3 +1,35 @@
-<input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
+<form action="processar_upload.php" method="post" enctype="multipart/form-data" id="uploadForm">
+  <input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
+  <input type="file" id="fileInput" />
+  <input type="submit" value="Upload" />
+</form>
 
-<input type="file" />
+<script>
+  document.getElementById('uploadForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Impede o envio padrão do formulário
+    var fileInput = document.getElementById('fileInput');
+    
+    if (fileInput.files.length > 0) {
+      var formData = new FormData();
+      formData.append('file', fileInput.files[0]);
+
+      // Aqui você pode usar o AJAX para enviar o arquivo para o servidor.
+      // Exemplo usando XMLHttpRequest:
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'processar_upload.php', true);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          // Upload bem-sucedido, redirecionar o usuário para o link desejado.
+          window.location.href = 'https://www.youtube.com/';
+        } else {
+          // Tratar erros de upload, se necessário.
+          alert('Ocorreu um erro durante o upload. Tente novamente mais tarde.');
+        }
+      };
+      xhr.send(formData);
+    } else {
+      // Caso nenhum arquivo tenha sido selecionado.
+      alert('Por favor, selecione um arquivo antes de fazer o upload.');
+    }
+  });
+</script>
